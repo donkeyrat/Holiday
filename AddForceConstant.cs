@@ -65,4 +65,6 @@ public class AddForceConstant : MonoBehaviour, GameObjectPooling.IPoolable
 	public void Release()
     {
     }
+
+	public bool IsManagedByPool { get; set; }
 }
