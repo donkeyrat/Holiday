@@ -42,7 +42,7 @@ namespace Holiday
                 }
             }
             
-            foreach (var sb in holiday.LoadAllAssets<SoundBank>()) 
+            foreach (var sb in holiday.LoadAllAssets<SoundBank>())
             {
                 if (sb.name.Contains("Sound")) {
                     var vsb = ServiceLocator.GetService<SoundPlayer>().soundBank;
