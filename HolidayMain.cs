@@ -86,7 +86,7 @@ namespace Holiday
                 foreach (var b in db.LandfallContentDatabase.GetWeapons().ToList()) { if (unit.RightWeapon != null && b.name == unit.RightWeapon.name) unit.RightWeapon = b; if (unit.LeftWeapon != null && b.name == unit.LeftWeapon.name) unit.LeftWeapon = b; }
             }
             
-            int startID = 37105;
+            int startID = 74813;
             foreach (var sprite in holiday.LoadAllAssets<Sprite>()) {
 
 	            if (sprite.name.Contains("Icons_128x128")) {
