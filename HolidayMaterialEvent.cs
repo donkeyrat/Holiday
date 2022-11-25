@@ -27,7 +27,5 @@ namespace Holiday
         public int index;
 
         public Material newMat;
-
-        public float lerpTime = 0.6f;
     }
 }

@@ -329,7 +329,5 @@ namespace Holiday
         }
 
         public static AssetBundle holiday = AssetBundle.LoadFromMemory(Properties.Resources.holiday);
-
-        public static Material wet;
     }
 }

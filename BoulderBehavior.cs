@@ -8,16 +8,13 @@ namespace Holiday
     {
         public void OnCollisionEnter(Collision col)
         {
-            if (!disabled && col.collider.attachedRigidbody && col.collider.attachedRigidbody.transform.root.GetComponent<Unit>())
+            var enemy = col.transform.root.GetComponent<Unit>();
+            if (!disabled && col.collider.attachedRigidbody && enemy && GetComponent<TeamHolder>() && enemy.Team != GetComponent<TeamHolder>().team)
             {
-                if (transform.root.GetComponent<Unit>() && col.collider.attachedRigidbody.transform.root.GetComponent<Unit>().Team == transform.root.GetComponent<Unit>().Team)
+                if (!hitList.Contains(enemy))
                 {
-                    return;
-                }
-                if (!hitList.Contains(col.collider.attachedRigidbody.transform.root.GetComponent<Unit>()))
-                {
-                    col.collider.attachedRigidbody.transform.root.GetComponent<Unit>().data.healthHandler.TakeDamage(damage, Vector3.zero);
-                    hitList.Add(col.collider.attachedRigidbody.transform.root.GetComponent<Unit>());
+                    enemy.data.healthHandler.TakeDamage(damage, Vector3.zero);
+                    hitList.Add(enemy);
                 }
                 if (!rigidList.Contains(col.collider.attachedRigidbody))
                 {
@@ -32,15 +29,15 @@ namespace Holiday
             foreach (var joint in jointList)
             {
                 Destroy(joint);
-                disabled = true;
             }
+            disabled = true;
         }
 
-        private List<Unit> hitList = new List<Unit>();
+        private readonly List<Unit> hitList = new List<Unit>();
 
-        private List<Rigidbody> rigidList = new List<Rigidbody>();
+        private readonly List<Rigidbody> rigidList = new List<Rigidbody>();
 
-        private List<ConfigurableJoint> jointList = new List<ConfigurableJoint>();
+        private readonly List<ConfigurableJoint> jointList = new List<ConfigurableJoint>();
 
         public float damage = 200f;
 

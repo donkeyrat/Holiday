@@ -412,10 +412,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddForceConstant.cs" />
     <Compile Include="HolidayBinder.cs" />
     <Compile Include="BoulderBehavior.cs" />
-    <Compile Include="CopyRotationOfParent.cs" />
     <Compile Include="GingerbreadCollision.cs" />
     <Compile Include="HolidayLauncher.cs" />
     <Compile Include="HolidayMain.cs" />
@@ -429,7 +427,8 @@
     <Compile Include="RandomizeEffect.cs" />
     <Compile Include="HolidaySecretManager.cs" />
     <Compile Include="HolidaySetParentRoot.cs" />
-    <Compile Include="HolidayUnlockConditionsChecker.cs" />
+    <Compile Include="SnowballSpawner.cs" />
+	<Compile Include="CopyRotationOfParent.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
