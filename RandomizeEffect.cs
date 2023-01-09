@@ -11,7 +11,7 @@ namespace Holiday
 
         public void Randomize()
         {
-            var chosen = transform.GetChild(Random.Range(0, transform.childCount - 1));
+            var chosen = transform.GetChild(Random.Range(0, transform.childCount));
             chosen.gameObject.SetActive(true);
         }
     }

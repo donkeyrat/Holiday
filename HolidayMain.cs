@@ -328,6 +328,6 @@ namespace Holiday
             return fac.Find(x => x.name == name);
         }
 
-        public static AssetBundle holiday = AssetBundle.LoadFromMemory(Properties.Resources.holiday);
+        public static AssetBundle holiday;// = AssetBundle.LoadFromMemory(Properties.Resources.holiday);
     }
 }
