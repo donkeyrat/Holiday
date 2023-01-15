@@ -25,8 +25,6 @@ namespace Holiday
 	
 		private RigidbodyHolder rigHolder;
 	
-		private float deadPower = 1f;
-	
 		private Rigidbody rightFootRig;
 	
 		private Rigidbody leftFootRig;
@@ -59,7 +57,6 @@ namespace Holiday
 			data = base.transform.root.GetComponentInChildren<DataHandler>();
 			rigHolder = data.GetComponent<RigidbodyHolder>();
 			data.takeFallDamage = false;
-			//data.canFall = false;
 			if ((bool)data.footRight)
 			{
 				rightFootRig = data.footRight.GetComponent<Rigidbody>();
@@ -72,11 +69,6 @@ namespace Holiday
 			if ((bool)data.head)
 			{
 				headRig = data.head.GetComponent<Rigidbody>();
-			}
-			AnimationHandler component = data.GetComponent<AnimationHandler>();
-			if ((bool)component)
-			{
-				component.multiplier = 0.5f;
 			}
 			heightVariance *= Random.value;
 			time = Random.Range(0f, 1000f);
@@ -99,8 +91,8 @@ namespace Holiday
 				return;
 			}
 	
-			if (!hasHalvedForce && (!data.legLeft.gameObject.activeSelf && data.legRight.gameObject.activeSelf) ||
-			    (data.legLeft.gameObject.activeSelf && !data.legRight.gameObject.activeSelf))
+			if (!hasHalvedForce && ((!data.legLeft.gameObject.activeSelf && data.legRight.gameObject.activeSelf) ||
+			                        (data.legLeft.gameObject.activeSelf && !data.legRight.gameObject.activeSelf)))
 			{
 				hasHalvedForce = true;
 				flightForce *= 0.3f;
@@ -117,8 +109,6 @@ namespace Holiday
 					dead = true;
 				}
 			}
-	
-			bool value = data.unit.m_PreferedDistance > data.distanceToTarget;
 	
 			RaycastHit hitInfo;
 			Physics.Raycast(new Ray(base.transform.position, Vector3.down), out hitInfo, flightCurve.keys[flightCurve.keys.Length - 1].time, mask);

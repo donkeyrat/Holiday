@@ -90,8 +90,6 @@ namespace Holiday
 	
 		private Rigidbody rig;
 	
-		private bool hitTeamMate;
-	
 		private Action<Collision, float> CollisionAction;
 	
 		private Action<Collision, float, Vector3> DealDamageAction;

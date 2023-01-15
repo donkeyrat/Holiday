@@ -18,7 +18,7 @@ namespace Holiday
 
         public void BreakPart(float damage) 
         {
-            if (ownData.health <= ownData.maxHealth * percentHealthRequirement && Random.value < breakChance && counter >= cooldown && damage >= damageThreshold)
+            if (breakableParts.Count > 0 && ownData.health <= ownData.maxHealth * percentHealthRequirement && Random.value < breakChance && counter >= cooldown && damage >= damageThreshold)
             {
                 counter = 0f;
                     
