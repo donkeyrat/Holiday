@@ -412,6 +412,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlternateShootPosition.cs" />
     <Compile Include="BreakableToy.cs" />
     <Compile Include="CollisionWeaponNutcracker.cs" />
     <Compile Include="HolidayBinder.cs" />
@@ -423,7 +424,7 @@
     <Compile Include="LerpTowards.cs" />
     <Compile Include="NutcrackerFloat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomizeEffect.cs" />
+    <Compile Include="RandomizeObject.cs" />
     <Compile Include="HolidaySecretManager.cs" />
     <Compile Include="HolidaySetParentRoot.cs" />
     <Compile Include="RandomizeMaterial.cs" />
