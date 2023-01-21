@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Holiday
 {
@@ -6,6 +7,9 @@ namespace Holiday
     {
         public void Awake()
         {
+            if (GetComponent<ProjectileHit>()) hit = GetComponent<ProjectileHit>();
+            if (GetComponentInParent<ProjectileHit>()) hit = GetComponentInParent<ProjectileHit>();
+            
             if (randomizeOnAwake) Randomize();
         }
         
@@ -18,10 +22,27 @@ namespace Holiday
         {
             var chosen = transform.GetChild(Random.Range(0, transform.childCount));
             chosen.gameObject.SetActive(true);
+            if (addDelayEventListenersAsHitEvent && chosen.GetComponent<DelayEvent>())
+            {
+                var delayEvent = chosen.GetComponent<DelayEvent>();
+                var hitEvents = new List<HitEvents>(hit.hitEvents)
+                {
+                    new HitEvents()
+                    {
+                        eventDelay = delayEvent.delay,
+                        hitEvent = delayEvent.delayedEvent
+                    }
+                };
+                hit.hitEvents = hitEvents.ToArray();
+            }
         }
+
+        private ProjectileHit hit;
 
         public bool randomizeOnStart;
         
         public bool randomizeOnAwake = true;
+
+        public bool addDelayEventListenersAsHitEvent;
     }
 }

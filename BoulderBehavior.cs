@@ -34,6 +34,9 @@ namespace Holiday
                     col.gameObject.AddComponent<HitByBoulder>();
                     rigList.Add(col.rigidbody);
                 }
+
+                col.rigidbody.velocity *= 0.3f;
+                col.rigidbody.angularVelocity *= 0.3f;
             }
         }
 
@@ -47,7 +50,12 @@ namespace Holiday
 
             foreach (var rig in rigList)
             {
-                if (rig && rig.GetComponent<HitByBoulder>()) Destroy(rig.GetComponent<HitByBoulder>());
+                if (rig && rig.GetComponent<HitByBoulder>())
+                {
+                    rig.velocity *= 0f;
+                    rig.angularVelocity *= 0f;
+                    Destroy(rig.GetComponent<HitByBoulder>());
+                }
             }
             rigList.Clear();
 

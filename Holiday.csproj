@@ -415,12 +415,14 @@
     <Compile Include="AlternateShootPosition.cs" />
     <Compile Include="BreakableToy.cs" />
     <Compile Include="CollisionWeaponNutcracker.cs" />
+    <Compile Include="CookieCrumble.cs" />
     <Compile Include="HolidayBinder.cs" />
     <Compile Include="BoulderBehavior.cs" />
     <Compile Include="GingerbreadCollision.cs" />
     <Compile Include="HolidayLauncher.cs" />
     <Compile Include="HolidayMain.cs" />
     <Compile Include="HolidayMaterialEvent.cs" />
+    <Compile Include="HolidayMeleeWeaponSpawnParented.cs" />
     <Compile Include="LerpTowards.cs" />
     <Compile Include="NutcrackerFloat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -431,6 +433,20 @@
     <Compile Include="SnowballSpawner.cs" />
 	<Compile Include="CopyRotationOfParent.cs" />
 	<Compile Include="SnowflakeVolley.cs" />
+	<Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\holiday" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
