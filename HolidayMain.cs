@@ -1,4 +1,5 @@
-﻿using Landfall.TABS;
+﻿using System;
+using Landfall.TABS;
 using UnityEngine;
 using Landfall.TABS.UnitEditor;
 using Landfall.TABS.Workshop;
@@ -7,6 +8,7 @@ using System.Linq;
 using HarmonyLib;
 using System.Reflection;
 using DM;
+using Object = UnityEngine.Object;
 
 namespace Holiday
 {
@@ -72,12 +74,7 @@ namespace Holiday
             {
                 name = "Bullshit: The Snowy Sequel",
                 hideFlags = HideFlags.HideAndDontSave
-            }.AddComponent<HolidaySecretManager>();
-            
-            foreach (var fac in holiday.LoadAllAssets<Faction>())
-            {
-                newFactions.Add(fac);
-            }
+            }.AddComponent<HolidaySceneManager>();
             
             foreach (var unit in holiday.LoadAllAssets<UnitBlueprint>())
             {
@@ -86,31 +83,78 @@ namespace Holiday
                 foreach (var b in db.LandfallContentDatabase.GetWeapons().ToList()) { if (unit.RightWeapon != null && b.name == unit.RightWeapon.name) unit.RightWeapon = b; if (unit.LeftWeapon != null && b.name == unit.LeftWeapon.name) unit.LeftWeapon = b; }
             }
             
-            int startID = 74813;
-            foreach (var sprite in holiday.LoadAllAssets<Sprite>()) {
+            foreach (var fac in holiday.LoadAllAssets<Faction>()) newFactions.Add(fac);
+            
+            foreach (var campaign in holiday.LoadAllAssets<TABSCampaignAsset>()) newCampaigns.Add(campaign);
+            
+            foreach (var lvl in holiday.LoadAllAssets<TABSCampaignLevelAsset>())
+            {
+                newCampaignLevels.Add(lvl);
+                
+                var holiday = newFactions.Find(x => x.name.Contains("Holiday"));
+                var secret = db.LandfallContentDatabase.GetFactions().ToList().Find(x => x.name.Contains("Secret"));
+                
+                var allowedU = new List<UnitBlueprint>();
+                var allowed = new List<Faction>();
+                
+                if (lvl.name.Contains("HolidayLevel"))
+                { 
+                    lvl.MapAsset = db.LandfallContentDatabase.GetMapAssetsOrdered().ToList().Find(x => x.name.Contains("Farmer_Snow"));
+                    
+                    allowed.AddRange(db.LandfallContentDatabase.GetFactions().ToList().Where(x => x.m_displayFaction));
+                    allowed.Remove(secret);
+                }
+                else if (lvl.name.Contains("HolidaySpookyLevel"))
+                {
+                    allowed.Add(holiday);
+                    allowed.Add(secret);
+                    
+                    allowedU.AddRange(holiday.Units);
+                    
+                    allowedU.Add(secret.Units.ToList().Find(x => x.name.Contains("SnowCannon")));
+                    allowedU.Add(secret.Units.ToList().Find(x => x.name.Contains("ToyRobot")));
+                    allowedU.Add(secret.Units.ToList().Find(x => x.name.Contains("SmoreKnight")));
+                }
+                
+                if (lvl.name.Contains("MapEquals"))
+                {
+                    var find = db.LandfallContentDatabase.GetMapAssetsOrdered().ToList().Find(x => x.name.Contains(lvl.name.Split(new[] { "MapEquals_" }, StringSplitOptions.RemoveEmptyEntries).Last()));
+                    if (find) lvl.MapAsset = find;
+                }
 
-	            if (sprite.name.Contains("Icons_128x128")) {
-
-		            var icon = Object.Instantiate(db.GetFactionIcon(db.LandfallContentDatabase.GetFactionIconIds().ToList()[0]));
-		            icon.name = sprite.name;
-		            icon.Entity.SetSpriteIcon(sprite);
-		            icon.Entity.GUID = new DatabaseID(-2, startID);
-		            startID++;
-		            newFactionIcons.Add(icon);
-	            }
+                var unitsToSearch = new List<TABSCampaignLevelAsset.TABSLayoutUnit>();
+                unitsToSearch.AddRange(lvl.BlueUnits);
+                unitsToSearch.AddRange(lvl.RedUnits);
+                foreach (var unit in unitsToSearch)
+                {
+                    if (unit.m_unitBlueprint.name.Contains("_VANILLA"))
+                    {
+                        var vanillaVersion = db.LandfallContentDatabase.GetUnitBlueprints().ToList().Find(x => x.name == unit.m_unitBlueprint.name.Replace("_VANILLA", ""));
+                        if (vanillaVersion) unit.m_unitBlueprint = vanillaVersion;
+                    }
+                }
+                
+                lvl.AllowedFactions = allowed.ToArray();
+                lvl.AllowedUnits = allowedU.ToArray();
             }
+
+            foreach (var vb in holiday.LoadAllAssets<VoiceBundle>()) newVoiceBundles.Add(vb);
+            
+            foreach (var icon in holiday.LoadAllAssets<FactionIcon>()) newFactionIcons.Add(icon);
             
             foreach (var objecting in holiday.LoadAllAssets<GameObject>()) 
             {
-                if (objecting != null) {
-
+                if (objecting != null) 
+                {
                     if (objecting.GetComponent<Unit>()) newBases.Add(objecting);
-                    else if (objecting.GetComponent<WeaponItem>()) {
+                    else if (objecting.GetComponent<WeaponItem>()) 
+                    {
                         newWeapons.Add(objecting);
                         int totalSubmeshes = 0;
-                        foreach (var rend in objecting.GetComponentsInChildren<MeshFilter>()) {
-                            if (rend.gameObject.activeSelf && rend.gameObject.activeInHierarchy && rend.mesh.subMeshCount > 0 && rend.GetComponent<MeshRenderer>() && rend.GetComponent<MeshRenderer>().enabled == true) {
-
+                        foreach (var rend in objecting.GetComponentsInChildren<MeshFilter>()) 
+                        {
+                            if (rend.gameObject.activeSelf && rend.gameObject.activeInHierarchy && rend.mesh.subMeshCount > 0 && rend.GetComponent<MeshRenderer>() && rend.GetComponent<MeshRenderer>().enabled) 
+                            {
                                 totalSubmeshes += rend.mesh.subMeshCount;
                             }
                         }
@@ -130,32 +174,36 @@ namespace Holiday
                     }
                     else if (objecting.GetComponent<ProjectileEntity>()) newProjectiles.Add(objecting);
                     else if (objecting.GetComponent<SpecialAbility>()) newAbilities.Add(objecting);
-                    else if (objecting.GetComponent<PropItem>()) {
+                    else if (objecting.GetComponent<PropItem>()) 
+                    {
                         newProps.Add(objecting);
                         int totalSubmeshes = 0;
-                        foreach (var rend in objecting.GetComponentsInChildren<MeshFilter>()) {
-                            if (rend.gameObject.activeSelf && rend.gameObject.activeInHierarchy && rend.mesh.subMeshCount > 0 && rend.GetComponent<MeshRenderer>() && rend.GetComponent<MeshRenderer>().enabled == true) {
-
+                        foreach (var rend in objecting.GetComponentsInChildren<MeshFilter>()) 
+                        {
+                            if (rend.gameObject.activeSelf && rend.gameObject.activeInHierarchy && rend.mesh.subMeshCount > 0 && rend.GetComponent<MeshRenderer>() && rend.GetComponent<MeshRenderer>().enabled) 
+                            {
                                 totalSubmeshes += rend.mesh.subMeshCount;
                             }
                         }
-                        foreach (var rend in objecting.GetComponentsInChildren<SkinnedMeshRenderer>()) {
+                        foreach (var rend in objecting.GetComponentsInChildren<SkinnedMeshRenderer>()) 
+                        {
                             if (rend.gameObject.activeSelf && rend.sharedMesh.subMeshCount > 0 && rend.enabled) {
 
                                 totalSubmeshes += rend.sharedMesh.subMeshCount;
                             }
                         }
-                        if (totalSubmeshes != 0) {
-                            float average = 1f / totalSubmeshes;
+                        if (totalSubmeshes != 0) 
+                        {
+                            var average = 1f / totalSubmeshes;
                             var averageList = new List<float>();
-                            for (int i = 0; i < totalSubmeshes; i++) { averageList.Add(average); }
+                            for (int i = 0; i < totalSubmeshes; i++) averageList.Add(average);
                             objecting.GetComponent<PropItem>().SubmeshArea = null;
                             objecting.GetComponent<PropItem>().SubmeshArea = averageList.ToArray();
                         }
                     }
                 }
             }
-            
+
             AddContentToDatabase();
         }
         
@@ -313,7 +361,7 @@ namespace Holiday
         public List<GameObject> newAbilities = new List<GameObject>();
 
         public List<GameObject> newWeapons = new List<GameObject>();
-        
+
         public List<GameObject> newProjectiles = new List<GameObject>();
 
         public static UnitBlueprint GetUnit(string name)

@@ -23,7 +23,6 @@ namespace Holiday
             yield return new WaitUntil(() => FindObjectOfType<ServiceLocator>() != null);
             yield return new WaitUntil(() => ServiceLocator.GetService<ISaveLoaderService>() != null);
             new HolidayMain();
-            yield break;
         }
 
         private static HolidayBinder instance;

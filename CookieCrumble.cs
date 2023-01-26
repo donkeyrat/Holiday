@@ -87,19 +87,22 @@ namespace Holiday
             if (!ownUnit || !ownUnit.data || !ownUnit.data.targetMainRig || currentState != CookieState.Default) return;
             
             ChangeState(CookieState.Pushing);
-            StartCoroutine(DoCookieMovement(ownUnit.data.mainRig.position + ownUnit.data.forwardGroundNormal * pushOffset, pushObject, pushCurve, pushEndDelay));
+            var pos = ownUnit.data.mainRig.position;
+            var forward = ownUnit.data.forwardGroundNormal;
+            var height = ownUnit.data.targetMainRig.position.y;
+            StartCoroutine(DoCookieMovement(new Vector3(pos.x, height, pos.z) + new Vector3(forward.x, 0f, forward.z) * pushOffset, pushObject, pushCurve, pushEndDelay));
         }
 
         private IEnumerator DoCookieMovement(Vector3 pointToLerpTo, GameObject objectToSpawn, AnimationCurve curve, float endDelay, bool pointUp = false)
         {
-            if (!ownUnit || !ownUnit.data || !ownUnit.data.targetMainRig) yield break;
+            if (!ownUnit || !ownUnit.data || !ownUnit.data.targetMainRig || !objectToSpawn) yield break;
 
-            var spawnedCookie = Instantiate(objectToSpawn, transform.TransformPoint(modelOffset), transform.rotation);
+            var spawnedCookie = Instantiate(objectToSpawn, transform.TransformPoint(modelOffset), transform.rotation, ownUnit.transform);
             var startPos = spawnedCookie.transform.position;
             var startRot = spawnedCookie.transform.rotation;
             var t = 0f;
             var endTime = curve.keys[curve.keys.Length - 1].time;
-            while (t < endTime)
+            while (t < endTime && spawnedCookie && ownUnit && ownUnit.data)
             {
                 spawnedCookie.transform.position = Vector3.Lerp(startPos, pointToLerpTo, curve.Evaluate(t));
                 spawnedCookie.transform.rotation = Quaternion.Lerp(startRot, pointUp ? Quaternion.LookRotation(Vector3.up) : Quaternion.LookRotation(pointToLerpTo - startPos), curve.Evaluate(t));

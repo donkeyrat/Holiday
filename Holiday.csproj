@@ -427,7 +427,7 @@
     <Compile Include="NutcrackerFloat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomizeObject.cs" />
-    <Compile Include="HolidaySecretManager.cs" />
+    <Compile Include="HolidaySceneManager.cs" />
     <Compile Include="HolidaySetParentRoot.cs" />
     <Compile Include="RandomizeMaterial.cs" />
     <Compile Include="SnowballSpawner.cs" />
@@ -446,7 +446,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\holiday" />
+    <Content Include="Resources\holiday" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

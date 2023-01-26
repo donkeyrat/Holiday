@@ -15,7 +15,7 @@ namespace Holiday
         public void OnCollisionEnter(Collision col)
         {
             var enemy = col.transform.root.GetComponent<Unit>();
-            if (!disabled && col.rigidbody && col.rigidbody.mass * 10 < rig.mass && enemy && teamHolder && enemy.Team != teamHolder.team)
+            if (!disabled && col.rigidbody&& enemy && teamHolder && enemy.Team != teamHolder.team)
             {
                 if (!enemy.GetComponent<HitByBoulder>())
                 {
@@ -23,7 +23,7 @@ namespace Holiday
                     enemy.gameObject.AddComponent<HitByBoulder>();
                     hitList.Add(enemy);
                 }
-                if (!col.gameObject.GetComponent<HitByBoulder>())
+                if (!col.gameObject.GetComponent<HitByBoulder>() && col.rigidbody.mass * 10 < rig.mass)
                 {
                     var joint = col.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = rig;
@@ -33,10 +33,13 @@ namespace Holiday
                     
                     col.gameObject.AddComponent<HitByBoulder>();
                     rigList.Add(col.rigidbody);
+                    
+                    foreach (var enemyRig in enemy.data.allRigs.AllRigs)
+                    {
+                        enemyRig.velocity *= 0.3f;
+                        enemyRig.angularVelocity *= 0.3f;
+                    }
                 }
-
-                col.rigidbody.velocity *= 0.3f;
-                col.rigidbody.angularVelocity *= 0.3f;
             }
         }
 
@@ -44,17 +47,17 @@ namespace Holiday
         {
             foreach (var joint in jointList)
             {
-                Destroy(joint);
+                if (joint) Destroy(joint);
             }
             jointList.Clear();
 
-            foreach (var rig in rigList)
+            foreach (var enemyRig in rigList)
             {
-                if (rig && rig.GetComponent<HitByBoulder>())
+                if (enemyRig && enemyRig.GetComponent<HitByBoulder>())
                 {
-                    rig.velocity *= 0f;
-                    rig.angularVelocity *= 0f;
-                    Destroy(rig.GetComponent<HitByBoulder>());
+                    enemyRig.velocity *= 0f;
+                    enemyRig.angularVelocity *= 0f;
+                    Destroy(enemyRig.GetComponent<HitByBoulder>());
                 }
             }
             rigList.Clear();

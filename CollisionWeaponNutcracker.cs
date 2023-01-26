@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Landfall.MonoBatch;
 using Landfall.TABS;
+using ModIO.UI;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -61,7 +62,7 @@ namespace Holiday
 	
 		private CollisionWeaponEffect[] meleeWeaponEffects;
 	
-		private Weapon weapon;
+		public Weapon weapon;
 	
 		private Counter counter;
 	
@@ -109,7 +110,7 @@ namespace Holiday
 			holdable = GetComponent<Holdable>();
 			counter = GetComponent<Counter>();
 			teamHolder = GetComponent<TeamHolder>();
-			weapon = GetComponent<Weapon>();
+			if (GetComponent<Weapon>()) weapon = GetComponent<Weapon>();
 			meleeWeaponEffects = GetComponents<CollisionWeaponEffect>();
 			multiplierPoint = GetComponentInChildren<MeleeWeaponMultiplierPoint>();
 			if ((bool)weapon)
@@ -256,7 +257,7 @@ namespace Holiday
 					WilhelmPhysicsFunctions.AddForceWithMinWeight(componentInParent.mainRig, (staticDamageValue ? 5f : Mathf.Sqrt(num * 50f)) * vector * onImpactForce, ForceMode.Impulse, massCap);
 					WilhelmPhysicsFunctions.AddForceWithMinWeight(collision.rigidbody, (staticDamageValue ? 5f : Mathf.Sqrt(num * 50f)) * vector * onImpactForce, ForceMode.Impulse, massCap);
 				}
-				if ((bool)weapon && collision.rigidbody.mass < weapon.rigidbody.mass)
+				if (collision.rigidbody.mass < rig.mass)
 				{
 					collision.rigidbody.velocity *= 0.6f;
 					if ((bool)componentInParent)

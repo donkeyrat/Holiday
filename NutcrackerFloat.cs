@@ -11,8 +11,6 @@ namespace Holiday
 	
 		public AnimationCurve flightCurve;
 	
-		public float deadPowerDecay = 2f;
-	
 		public float heightVariance = 0.5f;
 	
 		public float variationSpeed = 0.5f;
@@ -91,8 +89,7 @@ namespace Holiday
 				return;
 			}
 	
-			if (!hasHalvedForce && ((!data.legLeft.gameObject.activeSelf && data.legRight.gameObject.activeSelf) ||
-			                        (data.legLeft.gameObject.activeSelf && !data.legRight.gameObject.activeSelf)))
+			if (!hasHalvedForce && ((!data.legLeft.gameObject.activeSelf && data.legRight.gameObject.activeSelf) || (data.legLeft.gameObject.activeSelf && !data.legRight.gameObject.activeSelf)))
 			{
 				hasHalvedForce = true;
 				flightForce *= 0.3f;
