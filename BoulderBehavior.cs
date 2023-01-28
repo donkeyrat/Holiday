@@ -33,12 +33,6 @@ namespace Holiday
                     
                     col.gameObject.AddComponent<HitByBoulder>();
                     rigList.Add(col.rigidbody);
-                    
-                    foreach (var enemyRig in enemy.data.allRigs.AllRigs)
-                    {
-                        enemyRig.velocity *= 0.3f;
-                        enemyRig.angularVelocity *= 0.3f;
-                    }
                 }
             }
         }
@@ -55,8 +49,6 @@ namespace Holiday
             {
                 if (enemyRig && enemyRig.GetComponent<HitByBoulder>())
                 {
-                    enemyRig.velocity *= 0f;
-                    enemyRig.angularVelocity *= 0f;
                     Destroy(enemyRig.GetComponent<HitByBoulder>());
                 }
             }

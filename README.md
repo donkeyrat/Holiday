@@ -1,4 +1,3 @@
-﻿
 # Holiday
 
 Merry Christmas and Happy Holidays! This mod adds a variety of joyous new Christmas-themed units, to a new Holiday faction! It also adds three new Holiday-themed secret units, including an elf-piloted mech, and an entirely new Holiday campaign!
@@ -69,6 +68,18 @@ The mod's [**Github**](https://github.com/donkeyrat/Holiday) is now the only pla
  - Revamped the Gift Bringer.
  - Modified the Candypult.
  - Modified the Tree Basher.
+
+### 2.0.1
+
+ - Added more particles to the S'more Knight's secret item.
+ - Nerfed the Candypult.
+ - Nerfed the Rocking Horse.
+ - Nerfed the Snow Cannon.
+ - Fixed the Snow Roller stretching units.
+ - Fixed the Snow Cannon moving oddly.
+ - Fixed new unit bases not having spawn effects.
+ - Fixed the S'more Knight's secret unlock name not having an apostrophe.
+ - Fixed all secret unlock icons to be unstretched.
 
 ## Credits
 
