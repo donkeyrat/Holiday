@@ -84,6 +84,7 @@ The mod's [**Github**](https://github.com/donkeyrat/Holiday) is now the only pla
 ### 2.0.2
 
  - Added a passive bounce to the Nutcracker's jaw.
+ - Fixed the Nutcracker having inconsistent damage.
  - Fixed many custom behaviors not functioning properly.
  - Fixed the Jolly-Bot's train projectile acting weirdly.
 
