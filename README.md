@@ -81,6 +81,12 @@ The mod's [**Github**](https://github.com/donkeyrat/Holiday) is now the only pla
  - Fixed the S'more Knight's secret unlock name not having an apostrophe.
  - Fixed all secret unlock icons to be unstretched.
 
+### 2.0.2
+
+ - Added a passive bounce to the Nutcracker's jaw.
+ - Fixed many custom behaviors not functioning properly.
+ - Fixed the Jolly-Bot's train projectile acting weirdly.
+
 ## Credits
 
 This mod is made by Team Grad, a mod team that aims to improve the game by adding new units, features, and more!
