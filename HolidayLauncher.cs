@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Holiday
 {
-	[BepInPlugin("teamgrad.holiday", "Holiday", "2.0.3")]
+	[BepInPlugin("teamgrad.holiday", "Holiday", "2.0.4")]
 	[BepInDependency("teamgrad.core")]
 	public class HolidayLauncher : TGMod
 	{
