@@ -88,12 +88,20 @@ The mod's [**Github**](https://github.com/donkeyrat/Holiday) is now the only pla
  - Fixed many custom behaviors not functioning properly.
  - Fixed the Jolly-Bot's train projectile acting weirdly.
 
-### 2.0.2
+### 2.0.3
 
  - Added TGCore as a dependency.
  - Added a hat to the Jolly-Bot.
  - Added the Cork Rifle to the Unit Creator.
  - Fixed custom units that use items from the mod not loading properly.
+ 
+### 2.0.4
+
+ - Fixed a problem with the Thunderstore page.
+
+### 2.0.5
+
+ - Fixed a problem with the Thunderstore page.
 
 ## Credits
 
