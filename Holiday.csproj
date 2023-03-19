@@ -420,8 +420,6 @@
     <Compile Include="HolidayLauncher.cs" />
     <Compile Include="HolidayMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomizeObject.cs" />
-    <Compile Include="RandomizeMaterial.cs" />
     <Compile Include="SnowballSpawner.cs" />
 	<Compile Include="CopyRotationOfParent.cs" />
 	<Compile Include="Properties\Resources.Designer.cs">
