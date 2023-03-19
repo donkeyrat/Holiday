@@ -103,6 +103,10 @@ The mod's [**Github**](https://github.com/donkeyrat/Holiday) is now the only pla
 
  - Fixed a problem with the Thunderstore page.
 
+### 2.0.6
+
+ - Fixed nothing appearing in the Unit Creator.
+
 ## Credits
 
 This mod is made by Team Grad, a mod team that aims to improve the game by adding new units, features, and more!
