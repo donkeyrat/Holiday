@@ -130,9 +130,9 @@ namespace Holiday
             TGAddons.AddItems(holiday.LoadAllAssets<UnitBlueprint>(), holiday.LoadAllAssets<Faction>(),
                 holiday.LoadAllAssets<TABSCampaignAsset>(), holiday.LoadAllAssets<TABSCampaignLevelAsset>(),
                 holiday.LoadAllAssets<VoiceBundle>(), holiday.LoadAllAssets<FactionIcon>(),
-                holiday.LoadAllAssets<Unit>(), holiday.LoadAllAssets<PropItem>(),
-                holiday.LoadAllAssets<SpecialAbility>(), holiday.LoadAllAssets<WeaponItem>(),
-                holiday.LoadAllAssets<ProjectileEntity>());
+                holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<Unit>()), holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<PropItem>()),
+                holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<SpecialAbility>()), holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<WeaponItem>()),
+                holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<ProjectileEntity>()));
             TGMain.newSounds.AddRange(holiday.LoadAllAssets<SoundBank>());
         }
 
