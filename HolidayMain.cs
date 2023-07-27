@@ -19,10 +19,11 @@ namespace Holiday
             
             foreach (var unit in holiday.LoadAllAssets<UnitBlueprint>().Where(x => x.UnitBase != null))
             {
-                foreach (var unitBase in TGMain.landfallDb.GetUnitBases().ToList())
+                foreach (var unitBase in TGMain.landfallDb.GetUnitBases().ToList().Where(unitBase => unitBase.name == unit.UnitBase.name))
                 {
-                    if (unitBase.name == unit.UnitBase.name) unit.UnitBase = unitBase;
+                    unit.UnitBase = unitBase;
                 }
+
                 foreach (var weapon in TGMain.landfallDb.GetWeapons().ToList())
                 {
                     if (unit.RightWeapon && weapon.name == unit.RightWeapon.name) unit.RightWeapon = weapon;
@@ -96,8 +97,10 @@ namespace Holiday
                 lvl.AllowedUnits = allowedU.ToArray();
             }
             
-            foreach (var prop in holiday.LoadAllAssets<PropItem>())
+            foreach (var prop in holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<PropItem>()))
             {
+                if (!prop) continue;
+                
                 var totalSubmeshes = prop.GetComponentsInChildren<MeshFilter>().Where(rend => rend.gameObject.activeSelf && rend.gameObject.activeInHierarchy && rend.mesh.subMeshCount > 0 && rend.GetComponent<MeshRenderer>() && rend.GetComponent<MeshRenderer>().enabled).Sum(rend => rend.mesh.subMeshCount) + prop.GetComponentsInChildren<SkinnedMeshRenderer>().Where(rend => rend.gameObject.activeSelf && rend.sharedMesh.subMeshCount > 0 && rend.enabled).Sum(rend => rend.sharedMesh.subMeshCount);
                 if (totalSubmeshes > 0) 
                 {
@@ -109,8 +112,10 @@ namespace Holiday
                 }
             }
             
-            foreach (var weapon in holiday.LoadAllAssets<WeaponItem>())
+            foreach (var weapon in holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<WeaponItem>()))
             {
+                if (!weapon) continue;
+                
                 var totalSubmeshes = weapon.GetComponentsInChildren<MeshFilter>().Where(rend => rend.gameObject.activeSelf && rend.gameObject.activeInHierarchy && rend.mesh.subMeshCount > 0 && rend.GetComponent<MeshRenderer>() && rend.GetComponent<MeshRenderer>().enabled).Sum(rend => rend.mesh.subMeshCount) + weapon.GetComponentsInChildren<SkinnedMeshRenderer>().Where(rend => rend.gameObject.activeSelf && rend.sharedMesh.subMeshCount > 0 && rend.enabled).Sum(rend => rend.sharedMesh.subMeshCount);
                 if (totalSubmeshes > 0) 
                 {
