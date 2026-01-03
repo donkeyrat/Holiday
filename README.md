@@ -131,32 +131,32 @@ __Arargd - Tester__
 
 ## Gallery
 
-![enter image description here](https://imgur.com/EwAfGbV)
+![enter image description here](https://i.imgur.com/EwAfGbV.png)
 
-![enter image description here](https://imgur.com/bprBTxP)
+![enter image description here](https://i.imgur.com/bprBTxP.png)
 
-![enter image description here](https://imgur.com/ST6b5zq)
+![enter image description here](https://i.imgur.com/ST6b5zq.png)
 
-![enter image description here](https://imgur.com/t2z7Xm3)
+![enter image description here](https://i.imgur.com/t2z7Xm3.png)
 
-![enter image description here](https://imgur.com/l6Kws7F)
+![enter image description here](https://i.imgur.com/l6Kws7F.png)
 
-![enter image description here](https://imgur.com/0x2yZiK)
+![enter image description here](https://i.imgur.com/0x2yZiK.png)
 
-![enter image description here](https://imgur.com/aKmcXsE)
+![enter image description here](https://i.imgur.com/aKmcXsE.png)
 
-![enter image description here](https://imgur.com/9XpmPIx)
+![enter image description here](https://i.imgur.com/9XpmPIx.png)
 
-![enter image description here](https://imgur.com/blcOcsE)
+![enter image description here](https://i.imgur.com/blcOcsE.png)
 
-![enter image description here](https://imgur.com/IjJ5roQ)
+![enter image description here](https://i.imgur.com/IjJ5roQ.png)
 
-![enter image description here](https://imgur.com/Qx0qTP5)
+![enter image description here](https://i.imgur.com/Qx0qTP5.png)
 
-![enter image description here](https://imgur.com/n92IlxF)
+![enter image description here](https://i.imgur.com/n92IlxF.png)
 
-![enter image description here](https://imgur.com/ux2QfEs)
+![enter image description here](https://i.imgur.com/ux2QfEs.png)
 
-![enter image description here](https://imgur.com/Pup2A2Z)
+![enter image description here](https://i.imgur.com/Pup2A2Z.png)
 
-![enter image description here](https://imgur.com/cV6gxnm)
+![enter image description here](https://i.imgur.com/cV6gxnm.png)
