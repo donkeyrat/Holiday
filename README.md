@@ -1,6 +1,6 @@
 # Holiday
 
-Merry Christmas and Happy Holidays! This mod adds a variety of joyous new Christmas-themed units, to a new Holiday faction! It also adds three new Holiday-themed secret units, including an elf-piloted mech, and an entirely new Holiday campaign!
+Merry Christmas and Happy Holidays! This mod adds a variety of joyous new Christmas-themed units, to a new Holiday faction!
 
 ### If you have trouble with the mod, or if you just want to chat, you can join the [TABS Mod Center](https://discord.gg/zrs44qyp7S).
 
@@ -8,9 +8,7 @@ Merry Christmas and Happy Holidays! This mod adds a variety of joyous new Christ
 
 ## How To Use
 
-The mod's faction can be found in the factions bar, and the campaign can be found in the campaigns tab on the main menu. The secret units are all located on *Farmer Snow.* 
-
-Have fun!
+The mod's faction can be found in the factions bar. Have fun!
 
 ## Holiday Units
 
@@ -29,6 +27,7 @@ Have fun!
 | Unit | Location | Description |
 |-|-|-|
 | **S'more Knight** | *Farmer Snow* | More like some more knight, am I right? ..Anyway, this marshmallow man covered in cookie armor uses the power of cookies to crush, push, and block enemies, along with cutting them using a frozen hot chocolate blade! |
+| **Snowman** | *Farmer Snow/Western Holiday if installed* | Guarding Santa's workshop in the frosty North Pole, the Snowmen wield icy rooms that freeze units solid. When slain, they return from death in one last icy hurrah. |
 | **Snow Cannon** | *Farmer Snow* | Elf machinery has advanced, now they're launching snowglobes! This snow elf brings down snowflake rain, freezing armies. |
 | ***JOLLY-BOT*** | *Farmer Snow* | Behold, the peak of elf craftsmanship, the ultimate mech! Mounted to its right arm is a Gatling gun firing an assortment of toys, and on its left, a gun firing massive gifts that block armies. From its chest is a cannon that shoots clusters of explosive ornaments.  |
 
@@ -107,13 +106,20 @@ The mod's [**Github**](https://github.com/donkeyrat/Holiday) is now the only pla
 
  - Fixed nothing appearing in the Unit Creator.
 
+### 2.1.0
+
+ - Added Snowman.
+ - The S'more Knight now uses his cookie attacks at closer ranges.
+ - Modified some sound and visual effects.
+ - Modified the campaign to include Snowmen instead of Santa's Elves.
+
 ## Credits
 
 This mod is made by Team Grad, a mod team that aims to improve the game by adding new units, features, and more!
 
-__BD - Coder/Unit Designer/Owner__
-
 __Harren Tonderen - Modeler/Unit Designer/SFX Designer/Icon Artist__
+
+__BD - Coder/Unit Designer__
 
 __Midnight Cow - Modeler/Moral Support__
 
@@ -125,32 +131,32 @@ __Arargd - Tester__
 
 ## Gallery
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1068038508482134096/image.png)
+![enter image description here](https://imgur.com/EwAfGbV)
 
-![enter image description here](https://cdn.discordapp.com/attachments/655824172487934024/1068040405100273705/image.png)
+![enter image description here](https://imgur.com/bprBTxP)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1068038964696580116/image.png)
+![enter image description here](https://imgur.com/ST6b5zq)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1068039268049616926/image.png)
+![enter image description here](https://imgur.com/t2z7Xm3)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1067977694614138930/image.png)
+![enter image description here](https://imgur.com/l6Kws7F)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1067977974365827112/image.png)
+![enter image description here](https://imgur.com/0x2yZiK)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1067979670324265030/image.png)
+![enter image description here](https://imgur.com/aKmcXsE)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1067978358325006469/image.png)
+![enter image description here](https://imgur.com/9XpmPIx)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1068038150796083232/image.png)
+![enter image description here](https://imgur.com/blcOcsE)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1067979198876090418/image.png)
+![enter image description here](https://imgur.com/IjJ5roQ)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1068038331524448296/image.png)
+![enter image description here](https://imgur.com/Qx0qTP5)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1067977327553806386/image.png)
+![enter image description here](https://imgur.com/n92IlxF)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1040717680329637971/image.png)
+![enter image description here](https://imgur.com/ux2QfEs)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1040717845371293806/image.png)
+![enter image description here](https://imgur.com/Pup2A2Z)
 
-![enter image description here](https://cdn.discordapp.com/attachments/651812532746584085/1040916595247165591/image.png)
+![enter image description here](https://imgur.com/cV6gxnm)

@@ -25,6 +25,21 @@ namespace Holiday
 				Instantiate(HolidayMain.holiday.LoadAsset<GameObject>("SmoreKnight_Unlock"), secrets.transform, true);
 				Instantiate(HolidayMain.holiday.LoadAsset<GameObject>("SnowCannon_Unlock"), secrets.transform, true);
 				Instantiate(HolidayMain.holiday.LoadAsset<GameObject>("JollyBot_Unlock"), secrets.transform, true);
+				if (!HolidayMain.HasWesternMap)
+				{
+					Instantiate(HolidayMain.holiday.LoadAsset<GameObject>("Snowman_Unlock"), secrets.transform, true);
+				}
+			}
+			
+			if (scene.name == "WesternChristmas")
+			{
+				var secrets = new GameObject
+				{
+					name = "Secrets"
+				};
+				var snowman = Instantiate(HolidayMain.holiday.LoadAsset<GameObject>("Snowman_Unlock"), secrets.transform, true);
+				snowman.transform.position = new Vector3(9.225f, 1.5f, 45.87f);
+				snowman.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 			}
 		}
 	}

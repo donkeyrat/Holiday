@@ -5,6 +5,7 @@ using Landfall.TABS.UnitEditor;
 using Landfall.TABS.Workshop;
 using System.Collections.Generic;
 using System.Linq;
+using BepInEx.Bootstrap;
 using Landfall.TABS.GameMode;
 using TGCore;
 using Object = UnityEngine.Object;
@@ -73,6 +74,7 @@ namespace Holiday
                     allowedU.Add(secretFaction.Units.ToList().Find(x => x.name.Contains("SnowCannon")));
                     allowedU.Add(secretFaction.Units.ToList().Find(x => x.name.Contains("ToyRobot")));
                     allowedU.Add(secretFaction.Units.ToList().Find(x => x.name.Contains("SmoreKnight")));
+                    allowedU.Add(secretFaction.Units.ToList().Find(x => x.name.Contains("Snowman")));
                 }
                 
                 if (lvl.name.Contains("MapEquals"))
@@ -142,5 +144,7 @@ namespace Holiday
         }
 
         public static AssetBundle holiday = AssetBundle.LoadFromMemory(Properties.Resources.holiday);
+        
+        public static bool HasWesternMap = Chainloader.PluginInfos.ContainsKey("org.bepinex.plugins.WesternHoliday");
     }
 }

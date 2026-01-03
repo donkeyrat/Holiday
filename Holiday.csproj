@@ -135,7 +135,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="TGCore">
-      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Totally Accurate Battle Simulator\BepInEx\plugins\TGCore.dll</HintPath>
+      <HintPath>..\TGCore\bin\Debug\netstandard2.0\TGCore.dll</HintPath>
     </Reference>
     <Reference Include="udpkit">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Totally Accurate Battle Simulator\TotallyAccurateBattleSimulator_Data\Managed\udpkit.dll</HintPath>
@@ -415,6 +415,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BreakIntoUnits.cs" />
     <Compile Include="CookieCrumble.cs" />
     <Compile Include="BoulderBehavior.cs" />
     <Compile Include="HolidayLauncher.cs" />
@@ -438,7 +439,7 @@
     <Content Include="Resources\holiday" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)Holiday.dll" "C:\Program Files (x86)\Steam\steamapps\common\Totally Accurate Battle Simulator\BepInEx\plugins\" /Y</PostBuildEvent>
-  </PropertyGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)Holiday.dll&quot; &quot;D:\SteamLibrary\steamapps\common\Totally Accurate Battle Simulator\BepInEx\plugins\&quot; /Y" />
+  </Target>
 </Project>
