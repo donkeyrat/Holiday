@@ -99,47 +99,14 @@ namespace Holiday
                 lvl.AllowedUnits = allowedU.ToArray();
             }
             
-            foreach (var prop in holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<PropItem>()))
-            {
-                if (!prop) continue;
-                
-                var totalSubmeshes = prop.GetComponentsInChildren<MeshFilter>().Where(rend => rend.gameObject.activeSelf && rend.gameObject.activeInHierarchy && rend.mesh.subMeshCount > 0 && rend.GetComponent<MeshRenderer>() && rend.GetComponent<MeshRenderer>().enabled).Sum(rend => rend.mesh.subMeshCount) + prop.GetComponentsInChildren<SkinnedMeshRenderer>().Where(rend => rend.gameObject.activeSelf && rend.sharedMesh.subMeshCount > 0 && rend.enabled).Sum(rend => rend.sharedMesh.subMeshCount);
-                if (totalSubmeshes > 0) 
-                {
-                    float average = 1f / totalSubmeshes;
-                    var averageList = new List<float>();
-                    for (var i = 0; i < totalSubmeshes - 1; i++) averageList.Add(average);
-                    
-                    prop.SubmeshArea = averageList.ToArray();
-                }
-            }
             
-            foreach (var weapon in holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<WeaponItem>()))
-            {
-                if (!weapon) continue;
-                
-                var totalSubmeshes = weapon.GetComponentsInChildren<MeshFilter>().Where(rend => rend.gameObject.activeSelf && rend.gameObject.activeInHierarchy && rend.mesh.subMeshCount > 0 && rend.GetComponent<MeshRenderer>() && rend.GetComponent<MeshRenderer>().enabled).Sum(rend => rend.mesh.subMeshCount) + weapon.GetComponentsInChildren<SkinnedMeshRenderer>().Where(rend => rend.gameObject.activeSelf && rend.sharedMesh.subMeshCount > 0 && rend.enabled).Sum(rend => rend.sharedMesh.subMeshCount);
-                if (totalSubmeshes > 0) 
-                {
-                    float average = 1f / totalSubmeshes;
-                    var averageList = new List<float>();
-                    for (var i = 0; i < totalSubmeshes - 1; i++) averageList.Add(average);
-                    
-                    weapon.SubmeshArea = averageList.ToArray();
-                }
-            }
-
-            foreach (var audio in holiday.LoadAllAssets<AudioSource>()) 
-            {
-                audio.outputAudioMixerGroup = ServiceLocator.GetService<GameModeService>().AudioSettings.AudioMixer.outputAudioMixerGroup;
-            }
-
+            var allGameObjects = holiday.LoadAllAssets<GameObject>();
             TGAddons.AddItems(holiday.LoadAllAssets<UnitBlueprint>(), holiday.LoadAllAssets<Faction>(),
                 holiday.LoadAllAssets<TABSCampaignAsset>(), holiday.LoadAllAssets<TABSCampaignLevelAsset>(),
                 holiday.LoadAllAssets<VoiceBundle>(), holiday.LoadAllAssets<FactionIcon>(),
-                holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<Unit>()), holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<PropItem>()),
-                holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<SpecialAbility>()), holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<WeaponItem>()),
-                holiday.LoadAllAssets<GameObject>().Select(x => x.GetComponent<ProjectileEntity>()));
+                allGameObjects.Select(x => x.GetComponent<Unit>()), allGameObjects.Select(x => x.GetComponent<PropItem>()),
+                allGameObjects.Select(x => x.GetComponent<SpecialAbility>()), allGameObjects.Select(x => x.GetComponent<WeaponItem>()),
+                allGameObjects.Select(x => x.GetComponent<ProjectileEntity>()));
             TGMain.newSounds.AddRange(holiday.LoadAllAssets<SoundBank>());
         }
 
