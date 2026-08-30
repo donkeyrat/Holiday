@@ -112,6 +112,19 @@ The mod's [**Github**](https://github.com/donkeyrat/Holiday) is now the only pla
  - The S'more Knight now uses his cookie attacks at closer ranges.
  - Modified some sound and visual effects.
  - Modified the campaign to include Snowmen instead of Santa's Elves.
+ 
+ ### 2.2.0
+* Added icons for all weapons, abilities, and props for the Unit Creator
+* Fixed coloring for all Holiday props
+* Split the Jolly-Bot's randomized projectiles into several different projectiles in the Unit Creator
+* Split the Nutcracker's randomized hats into several different hats in the Unit Creator
+* Reworked the effects of several units
+* Added a new spawning effect for every Holiday unit, including specialized ones for the S'more Knight and Snowman
+* Changed the model of the Reindeer's reins
+* Changed the cork rifle from a ranged weapon to a melee weapon
+* Turned the Star Wand's light into a projectile
+* Fixed broken coloring in the Unit Creator
+* Various additional polish and bugfixes
 
 ## Credits
 
